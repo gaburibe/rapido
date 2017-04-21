@@ -1,0 +1,166 @@
+/* css/header
+**
+** Archivo de estilos para la sección del header
+** ================================================
+*/
+
+body {
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+}
+
+/*
+** Estilos de header compartido (en secciones)
+** --------------------------------------------
+*/
+
+.header-section { margin: 50px 0 40px; }
+.header-section p strong { text-transform: uppercase; font-size: 12px; }
+.header-section select { margin-bottom: 11px; }
+.header-section button { margin-bottom: 11px; }
+.amount,
+.amount-footer {
+  width: 100%;
+  overflow: hidden;
+}
+.amount span,
+.amount-tracking span  {
+  display: block;
+  float: left;
+  width: 20%;
+  height: 35px;
+  border-top: 1px solid #5c5959;
+  border-bottom: 1px solid #5c5959;
+  border-left: 1px solid #5c5959;
+}
+.amount span:last-child,
+.amount-tracking span:last-child { border-right: 1px solid #5c5959; }
+
+.amount span._1_15 { background-color: rgb(186, 212, 163); }
+.amount span._16_30 { background-color: rgb(237, 210, 104); }
+.amount span._31_60 { background-color: rgb(235, 173, 105); }
+.amount span._61_140 { background-color: rgb(226, 137, 59); }
+.amount span._141 { background-color: rgb(209, 109, 101); }
+
+/* Sólo para los tres span de la sección de seguimiento */
+.amount-tracking span._0 { background-color: rgb(186, 212, 163); }
+.amount-tracking span._1_5 { background-color: rgb(237, 210, 104); }
+.amount-tracking span._6 { background-color: rgb(226, 137, 59);}
+
+.amount-footer span {
+  display: block;
+  float: left;
+  width: 20%;
+  text-align: center;
+  font-size: 10px;
+}
+
+/*
+** Global header
+** -------------------------------
+*/
+
+.header-bkg {
+  height: 350px;
+  padding: 50px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header-expanded {
+  margin-bottom: 0;
+  text-align: center;
+  color: #fff;
+  background: #424242 url('../images/header.png') no-repeat center center;
+  background-size: cover;
+}
+
+.header-expanded h2 {
+  color: #fff;
+  font-size: 25px;
+}
+
+.header-info {
+  padding-top: 35px;
+}
+
+.breadcrumb-container {
+  margin: 0;
+  padding: 0;
+}
+
+[id*="-viz"] { margin-bottom: 40px; }
+
+/*
+** Sección de calendario
+** -------------------------------
+*/
+
+#calendar-viz {
+  height: 600px;
+}
+
+/*
+** Sección de estatus de carpeta
+** -------------------------------
+*/
+
+#status-viz {
+  height: 600px;
+}
+
+.header-status button {
+  height: 50px;
+  margin-bottom: 0;
+  white-space: normal;
+  line-height: 1.1;
+}
+
+#status-activators { margin: 30px 0; }
+#status-activators button {
+  width: 170px;
+  margin: 0 6px 10px 0;
+  font-weight: bold;
+  font-size: 13px;
+}
+#status-activators button:last-child {
+  margin-right: 0;
+}
+
+/*
+** Sección de mapa
+** -------------------------------
+*/
+
+#map-viz {
+  height: 600px;
+}
+
+/*
+** Sección de seguimiento de carpeta
+** -------------------------------
+*/
+
+#tracking-viz {
+  height: 600px;
+}
+
+.searcher-insert {
+  padding: 6px 25px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #0c9;
+}
+.searcher-insert:hover,
+.searcher-insert:focus,
+.searcher-insert:active {
+  background-color: #00aa80;
+}
+
+/*
+** Seleccionador de archivos
+** ------------------------------
+*/
+
+.select-file { margin-bottom: 50px; }
+button.create { margin-top: 36px; }
+span.selection { height: 34px; }

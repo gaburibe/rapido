@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+ <script src="./js/jquery.js"></script>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/carpeta_abierta.css">
+        <script src="./js/jquery-ui.js"></script>
+        <script src="./js//bootstrap.js"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<style>
+
+</style>
+<style>
+
+.arc text {
+  /*font: 10px sans-serif;
+  text-anchor: middle;*/
+}
+
+.arc path {
+  stroke: #fff;
+}
+.bign{
+ font-size: 12vw;
+}
+.center{
+  text-align: center;
+
+}
+.slick{
+  font-weight: 100;
+    height: 205px;
+    padding-top: 84px;
+}
+section{
+  color:#5c5c5c;
+}
+.background{
+  fill:#fff;
+  stroke:black;
+  pointer-events: all;
+}
+.centertext{
+    font: 50px "Open Sans";
+  text-anchor: middle;
+    fill:#0ce8a9;
+    font-family: "Open Sans" !important;
+  }
+
+</style>
+<body>
+
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript">
+  
+  var resultado={};
+
+  $.getJSON( "encuesta.json", function( data ) {  
+    // console.log( "JSON Data: " + data);
+    c=0;
+    console.log(data[0])
+    makeAwnser(data)
+
+
+
+   
+});
+
+
+function makeAwnser(data){
+  nodes=[];
+  for(entrada in data){
+      c++;
+      objetoent=data[entrada];
+      if( objetoent.answers && resultado[objetoent.organization] ){
+        if(resultado[objetoent.organization][objetoent.answers.q1]){
+          resultado[objetoent.organization][objetoent.answers.q1]+=1;
+        }
+        else{
+          resultado[objetoent.organization][objetoent.answers.q1]=1;
+        }
+      
+      }
+      else{
+        resultado[objetoent.organization]={  };
+      }
+    }
+    for(asoc in resultado){
+      node={name:asoc,respuestas:resultado[asoc]  };
+      nodes.push(node);
+    }
+    //resultado=resultado.slice()
+     console.log(c,resultado,nodes);
+}
+</script>
+<script type="text/javascript">
+function drawQ(){
+  
+}
+  var svg = d3.select("body").append("svg")
+                                     .attr("width", 1200)
+                                    .attr("height", 200);
+ 
+ //Draw the Circle
+ var circle = svg.append("rect")
+                             .attr("x", 10)
+                             .attr("y", 10)
+                            .attr("width", 1000)
+                            .attr("height", 20)
+                            .attr("fill","grey")
+
+</script>
+
+<div class="container-fluid">
+  <div id="demo"></div>
+</div>
+
+
+<!-- <script src="js/donut.js"></script> -->
