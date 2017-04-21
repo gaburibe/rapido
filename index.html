@@ -48,7 +48,17 @@ section{
     fill:#0ce8a9;
     font-family: "Open Sans" !important;
   }
-
+  .radEncGood{
+    fill: skyblue;
+  }
+  .radEncReg{
+     fill: grey;
+  }
+  
+  .radEncBad{
+     fill: tomato;
+  }
+  
 </style>
 <body>
 
@@ -61,6 +71,7 @@ section{
     // console.log( "JSON Data: " + data);
     c=0;
     console.log(data[0])
+    
     makeAwnser(data)
 
 
@@ -69,7 +80,7 @@ section{
 });
 
 
-function makeAwnser(data){
+function makeAwnser(data,awn){
   nodes=[];
   for(entrada in data){
       c++;
@@ -79,6 +90,7 @@ function makeAwnser(data){
           resultado[objetoent.organization][objetoent.answers.q1]+=1;
         }
         else{
+          resultado[objetoent.organization].org=objetoent.organization;
           resultado[objetoent.organization][objetoent.answers.q1]=1;
         }
       
@@ -93,23 +105,68 @@ function makeAwnser(data){
     }
     //resultado=resultado.slice()
      console.log(c,resultado,nodes);
+     drawQ(nodes)
 }
 </script>
 <script type="text/javascript">
-function drawQ(){
-  
-}
-  var svg = d3.select("body").append("svg")
+var svg = d3.select("body").append("svg")
                                      .attr("width", 1200)
-                                    .attr("height", 200);
- 
- //Draw the Circle
- var circle = svg.append("rect")
+                                    .attr("height", 5300);
+
+function drawQ(nodes){
+  i=2;
+  var back = svg.append("rect")
                              .attr("x", 10)
                              .attr("y", 10)
                             .attr("width", 1000)
                             .attr("height", 20)
                             .attr("fill","grey")
+  for(node in nodes){
+    i=drawsingle(nodes[node],i);
+  }
+  
+
+}
+
+function drawsingle(node,i){
+    awn={radEncGood:0,radEncReg:0,radEncBad:0}
+    colors={radEncGood:"springgreen",radEncReg:"grey",radEncBad:"tomato"}
+    T=0;
+
+    for(s in awn){
+      a=awn[s];
+      if (!node.respuestas[s]) {node.respuestas[s]=0}
+      T=T+node.respuestas[s];
+    }
+    past=0;
+    if(T<=50){return i;}
+    else{
+      svg.append("text")
+        .attr("x", 20)
+        .attr("y", (40*i)+2+10 )
+        .text(node.name)
+      for(s in awn){
+      val=node.respuestas[s]/T;
+      
+        svg.append("rect")
+        .attr("x", 200+past)
+        .attr("y", (40*i)+2 )
+        .attr("width", 100*val)
+        .attr("height", 20)
+        .attr("class",s)
+        past+=val;
+      }
+      console.log(node.name,T,node.respuestas.radEncGood/T, i);
+      return i+1;
+    }
+    
+     
+    
+}
+  
+ 
+ //Draw the Circle
+ 
 
 </script>
 
