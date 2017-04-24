@@ -91,6 +91,9 @@ section{
     right:10px;
     top:10px;
   }
+  .smlabel{
+    font-size:8px;
+  }
 </style>
 <body>
 <div class="resumen">
@@ -114,7 +117,7 @@ section{
 <script type="text/javascript">
   colors={radEncGood:"skyblue",radEncReg:"grey",radEncBad:"tomato",
   radEncA_R1:"rgba(135,206,235,1)",radEncA_R2:"rgba(135,206,235,.5)"
-  ,radEncA_R3:"rgba(255,99,71,.5)",radEncA_R4:"rgba(255,99,71,1)",radEncA_R5:"rgba(255,99,71,1)"}
+  ,radEncA_R3:"rgba(255,99,71,.5)",radEncA_R4:"rgba(255,99,71,1)"}
 
 
   
@@ -249,6 +252,12 @@ function drawQ(nodes,awn,margin){
   .attr("y", 20)
   .attr("dy", "2em")
   .text("que buscabas?")
+
+  svg.append("text")
+  .attr("x", 600)
+  .attr("y", 20)
+  .attr("dy", "1em")
+  .text("TOTAL")
   for(node in nodes){
     i=drawsingle(nodes[node],i,awn,margin);
   }
@@ -258,6 +267,19 @@ function drawQ(nodes,awn,margin){
 function drawdonut(){
 
 }
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>" + d.data.age + ":</strong> <span style='color:red'>" + d.data.population + "</span>";
+  })
+var tip2 = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    console.log("kjhjkhjk",d);
+    return "<strong>"+d+":</strong> <span style='color:red'>ff</span>";
+  })
 function drawsingle(node,i,awn,margin){
     T=0;
     T2=0;
@@ -272,7 +294,7 @@ function drawsingle(node,i,awn,margin){
       T2=T2+node.rq2[s];
     }
     past=0;
-    if(T<=1){return i;}
+    if(T<=50){return i;}
     else{
       svg.append("text")
         .attr("x", 20)
@@ -284,22 +306,46 @@ function drawsingle(node,i,awn,margin){
         svg.append("rect")
         .attr("x", margin+200+past)
         .attr("y", (40*i)+2 )
-        .attr("width", 100*val)
+        .attr("width", 150*val)
         .attr("height", 20)
         .attr( "fill",colors[s] )
-        past+=100*val;
+        .attr("data", val)
+
+        if (val>=.10) {
+        svg.append("text")
+          .attr("x", margin+200+past)
+          .attr("y", (40*i) )
+          .attr("class","smlabel")
+          .text(Math.round(val*100)+"%");
+        }
+        past+=150*val;
       }
       past=0;
       for(s in awn.q2){
       val=node.rq2[s]/T2;
-        svg.append("rect")
-        .attr("x", 100+250+past)
+        svg
+        .append("rect")
+        .attr("x", 100+280+past)
         .attr("y", (40*i)+2 )
         .attr("width", 200*val)
         .attr("height", 20)
         .attr( "fill",colors[s] )
+        .attr("data", val)
+
+        if (val>=.10) {
+          svg.append("text")
+        .attr("x", 100+280+past)
+        .attr("y", (40*i) )
+        .attr("class","smlabel")
+        .text(Math.round(val*100)+"%");
+        }
+        
         past+=200*val;
       }
+      svg.append("text")
+        .attr("x", 600)
+        .attr("y", (40*i)+20 )
+        .text(T)
       // console.log(node.name,T,node.respuestas.radEncGood/T, i);
       return i+1;
     }
@@ -307,19 +353,16 @@ function drawsingle(node,i,awn,margin){
      
     
 }
-  
+ svg.call(tip2); 
  
  //Draw the Circle
  
 
 </script>
 <script type="text/javascript">
-var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    return "<strong>" + d.data.age + ":</strong> <span style='color:red'>" + d.data.population + "</span>";
-  })
+
+
+
 function donut(contenedor,num){
   console.log("DONUTR")
   var width = 230,
@@ -327,7 +370,7 @@ function donut(contenedor,num){
     radius = 120;
 
 var color = d3.scale.ordinal()
-    .range(["#0ce8a9", "#0dcc91", "#0caa75", "#0d8459", "#08442a", "#000", "#fff"]);
+    .range(["rgba(135,206,235,1)", "rgba(135,206,235,.7)", "rgba(135,206,235,.5)", "rgba(135,206,235,.3)", "rgba(135,206,235,.1)", "#000", "#fff"]);
 
 var arc = d3.svg.arc()
     .outerRadius(radius - 10)
@@ -345,7 +388,7 @@ var svg = d3.select("#"+contenedor).append("svg")
     svg.append("text")
       .attr("dy", ".35em")
       .attr("class","centertext")
-      .text(function(d) { return "Q3" });
+      .text(function(d) { return "Q"+num });
 
     svg.call(tip);
 
