@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
  <script src="./js/jquery.js"></script>
- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <link rel="stylesheet" href="./css/jquery-ui.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/carpeta_abierta.css">
         <script src="./js/jquery-ui.js"></script>
-        <script src="./js//bootstrap.js"></script>
+        <script src="./js/bootstrap.js"></script>
 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="css/header.css" rel="stylesheet">
+        <link href="css/footer.css" rel="stylesheet">
 <style>
 
-</style>
-<style>
+
 
 .arc text {
   /*font: 10px sans-serif;
@@ -89,355 +90,203 @@ section{
   .resumen{
     position: absolute;
     right:10px;
-    top:10px;
+        top: 150px;
   }
   .smlabel{
     font-size:8px;
   }
+  .tablaContainer{
+    /*height: 1200px;
+    overflow-y: scroll;*/
+    overflow-x: hidden;
+  }
 </style>
 <body>
-<div class="resumen">
-  <div id="donut1">
-  <h1>¿Qué te gustó más?</h1>
+  <dgm-navbar>
+        <nav class="navbar navbar-default navbar-fixed-top style-scope dgm-navbar">
+            <div class="container-fluid style-scope dgm-navbar">
+                <div class="navbar-header style-scope dgm-navbar">
+                    <button type="button" id="navbarSecond" class="navbar-toggle collapsed style-scope dgm-navbar" data-toggle="collapse" data-target="#navbarMainCollapse">
+                        <span class="sr-only style-scope dgm-navbar">Interruptor de Navegación</span>
+                        <span class="icon-bar style-scope dgm-navbar"></span>
+                        <span class="icon-bar style-scope dgm-navbar"></span>
+                        <span class="icon-bar style-scope dgm-navbar"></span>
+                    </button>
+                    <a class="navbar-brand style-scope dgm-navbar" title="Ir a la página de inicio de datos.gob.mx" href="//datos.gob.mx/">
+                        <img style="max-width: 125px !important" src="https://raw.githubusercontent.com/mxabierto/assets/master/img/ic-dgm-logo.png" alt="datos.gob.mx" class="style-scope dgm-navbar">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse style-scope dgm-navbar" id="navbarSecondCollapse">
+                    <ul class="nav navbar-nav navbar-right social-navigation style-scope dgm-navbar" role="navigation" aria-label="Navegación social">
+                        <li class="item-facebook style-scope dgm-navbar"><a href="//facebook.com/datosgobmx" target="_blank" class="style-scope dgm-navbar">Facebook</a></li>
+                        <li class="item-twitter style-scope dgm-navbar"><a href="//twitter.com/datosgobmx" target="_blank" class="style-scope dgm-navbar">Twitter</a></li>
+                        <li class="item-github style-scope dgm-navbar"><a href="//github.com/mxabierto" target="_blank" class="style-scope dgm-navbar">Github</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav style-scope dgm-navbar">
+                        <li class="style-scope dgm-navbar">
+                            <a aria-label="Ir al catalogo de datos" title="Ir al catalogo de datos" href="http://datos.gob.mx/busca" class="style-scope dgm-navbar">Datos</a>
+                        </li>
+                        <li class="style-scope dgm-navbar">
+                            <a aria-label="Conoce el impacto de los datos" title="Conoce el impacto de los datos" href="//datos.gob.mx/blog" class="style-scope dgm-navbar">Blog</a>
+                        </li>
+                        <li class="style-scope dgm-navbar">
+                            <a aria-label="Conoce las herramientas con datos" title="Conoce las herramientas con datos" href="//datos.gob.mx/herramientas" class="style-scope dgm-navbar">Herramientas</a>
+                        </li>
+                        <li class="style-scope dgm-navbar">
+                            <a aria-label="Conoce más sobre este sitio" title="Conoce más sobre este sitio" href="//datos.gob.mx/acerca" class="style-scope dgm-navbar">Acerca</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-inverse navbar-fixed-top gob-mx-navbar style-scope dgm-navbar" role="navigation" style="width: 100%; margin: 0; max-width: 100%;">
+            <div class="container-fluid style-scope dgm-navbar">
+                <div class="navbar-header style-scope dgm-navbar">
+                    <button type="button" id="navbarMain" class="navbar-toggle collapsed style-scope dgm-navbar" data-toggle="collapse" data-target="#navbarMainCollapse">
+                        <span class="sr-only style-scope dgm-navbar">Interruptor de Navegación</span>
+                        <span class="icon-bar style-scope dgm-navbar"></span>
+                        <span class="icon-bar style-scope dgm-navbar"></span>
+                        <span class="icon-bar style-scope dgm-navbar"></span>
+                    </button>
+                    <a class="navbar-brand style-scope dgm-navbar" href="https://www.gob.mx/" style="padding-left:8px;">
+                        <img src="https://framework-gb.cdn.gob.mx/assets/images/gobmxlogo.svg" style="height:29px;" alt="Página de inicio, Gobierno de México" class="style-scope dgm-navbar">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse style-scope dgm-navbar" id="navbarMainCollapse">
+                    <ul class="nav navbar-nav navbar-right style-scope dgm-navbar">
+                        <li class="style-scope dgm-navbar"><a href="https://www.gob.mx/tramites" class="style-scope dgm-navbar">Trámites</a></li>
+                        <li class="style-scope dgm-navbar"><a href="https://www.gob.mx/gobierno" class="style-scope dgm-navbar">Gobierno</a></li>
+                        <li class="style-scope dgm-navbar"><a href="https://www.gob.mx/participa" class="style-scope dgm-navbar">Participa</a></li>
+                        <li class="datos-item style-scope dgm-navbar"><a href="http://datos.gob.mx/" class="style-scope dgm-navbar">Datos</a></li>
+                        <li class="style-scope dgm-navbar">
+                            <a href="https://www.gob.mx/busqueda" class="style-scope dgm-navbar">
+                                <span class="sr-only style-scope dgm-navbar">Búsqueda</span>
+                                <img src="https://framework-gb.cdn.gob.mx/assets/search.svg" class="style-scope dgm-navbar">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+  </dgm-navbar>
+<div class="container-fluid" style="margin-top: 150px;"> 
+  <div class="row">
+    <div class="col-sm-8 col-md-8 col-lg-8 tablaContainer">
+      <div id="tabla"></div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <div class="resumen2">
+        <div id="donut1">
+        <h1>¿Qué te gustó más?</h1>
+          
+        </div>
+        <div id="donut2">
+         <h1>¿Qué mejorarías?</h1>
+          
+        </div>
+        <div id="donut3">
+          <h1>¿Recomendarías nuestro portal <Br>a un amigo o familiar?</h1>
+        </div>
+
+      </div>
+    </div>
+  </div>
     
-  </div>
-  <div id="donut2">
-   <h1>¿Qué mejorarías?</h1>
-    
-  </div>
-  <div id="donut3">
-    <h1>¿Recomendarías nuestro portal <Br>a un amigo o familiar?</h1>
-  </div>
 
 </div>
 
-<script src="//d3js.org/d3.v3.min.js"></script>
+
+<script src="js/d3.v3.js"></script>
 <script src="js/tip.js"></script>
+<script src="js/tabla.js"></script>
 
-<script type="text/javascript">
-  colors={radEncGood:"skyblue",radEncReg:"grey",radEncBad:"tomato",
-  radEncA_R1:"rgba(135,206,235,1)",radEncA_R2:"rgba(135,206,235,.5)"
-  ,radEncA_R3:"rgba(255,99,71,.5)",radEncA_R4:"rgba(255,99,71,1)"}
-
-
-  
-
-  $.getJSON( "encuesta.json", function( data ) {  
-    // console.log( "JSON Data: " + data);
-    c=0;
-    console.log(data)
-    makeAwnser(data)
-
-
-
-   
-});
-
-
-function makeAwnser(data,awn){
-  var resultado={};
-  var resultado2={};
-  nodes=[];
-
-  awn={ q1:{radEncGood:0,radEncReg:0,radEncBad:0},
-  q2:{radEncA_R1:0,radEncA_R2:0,radEncA_R3:0,radEncA_R4:0,radEncA_R5:0}, 
-  qg3:{radEncA_R1:0,radEncA_R2:0,radEncA_R3:0,radEncA_R4:0,radEncA_R5:0}, 
-  q4:{radEncC_R1:0,radEncC_R2:0} ,
-  qb3:{ckEncB_A1:0,ckEncB_A2:0,ckEncB_A3:0,ckEncB_A4:0,ckEncB_A5:0} 
-  }
-  for(entrada in data){
-      c++;
-      objetoent=data[entrada];
-      if (objetoent.answers && objetoent.answers.q4) {
-        awn.q4[objetoent.answers.q4]+=1;
-      }
-      if (objetoent.answers && objetoent.answers.q1=="radEncGood") {
-        for(k in objetoent.answers.q3){
-          awn.qg3[objetoent.answers.q3[k]]+=1;
-        }
-      }
-      else if(objetoent.answers && (objetoent.answers.q1=="radEncBad" || objetoent.answers.q1=="radEncReg") ){
-        for(k in objetoent.answers.q3){
-          awn.qb3[objetoent.answers.q3[k]]+=1;
-        }
-      }
-      if( objetoent.answers && resultado[objetoent.organization] ){
-        if(resultado[objetoent.organization][objetoent.answers.q1]){
-          resultado[objetoent.organization][objetoent.answers.q1]+=1;
-        }
-        else{
-          resultado[objetoent.organization].org=objetoent.organization;
-          resultado[objetoent.organization][objetoent.answers.q1]=1;
-        }
-      
-      }
-      else{
-        resultado[objetoent.organization]={};
-      }
-      // Q2
-      if( objetoent.answers && resultado2[objetoent.organization] ){
-        if(resultado2[objetoent.organization][objetoent.answers.q2]){
-          resultado2[objetoent.organization][objetoent.answers.q2]+=1;
-          //resultado[objetoent.organization].q2[objetoent.answers.q2]+=1;
-        }
-        else{
-          resultado2[objetoent.organization].org=objetoent.organization;
-          resultado2[objetoent.organization][objetoent.answers.q2]=1;
-        }
-      
-      }
-      else{
-        resultado2[objetoent.organization]={};
-      }
-
-  }
-  for(asoc in resultado){
-    node={name:asoc,respuestas:resultado[asoc],rq2:resultado2[asoc]  };
-    nodes.push(node);
-
-  }
-  console.log("awn",awn)
-  drawQ(nodes,awn,0)
-  // for(asoc in resultado2){
-  //   node={name:asoc,respuestas:resultado2[asoc]  };
-  //   nodes.q2.push(node);
-  // }
-  // drawQ(nodes.q2,awn.q2,250)
-  //   console.log("awn",nodes)
-     //Dibuja cada una de las preguntas
-     
-}
-</script>
-<script type="text/javascript">
-var svg = d3.select("body").append("svg")
-                                     .attr("width", 1200)
-                                    .attr("height", 5300);
-
-function drawQ(nodes,awn,margin){
-  i=2;
-  // var back = svg.append("rect")
-  //                            .attr("x", 10)
-  //                            .attr("y", 10)
-  //                           .attr("width", 1000)
-  //                           .attr("height", 20)
-  //                           .attr("fill","grey")
-  svg.append("text")
-  .attr("x", 200)
-  .attr("y", 20)
-  .attr("dy", "0em")
-  .text("¿Cómo fue tu ")
-  svg.append("text")
-  .attr("x", 200)
-  .attr("y", 20)
-  .attr("dy", "1em")
-  .text("experiencia en")
-  svg.append("text")
-  .attr("x", 200)
-  .attr("y", 20)
-  .attr("dy", "2em")
-  .text("gob.mx?")
-
-  svg.append("text")
-  .attr("x", 400)
-  .attr("y", 20)
-  .attr("dy", "0em")
-  .text("¿Fue fácil")
-  svg.append("text")
-  .attr("x", 400)
-  .attr("y", 20)
-  .attr("dy", "1em")
-  .text("encontrar lo")
-  svg.append("text")
-  .attr("x", 400)
-  .attr("y", 20)
-  .attr("dy", "2em")
-  .text("que buscabas?")
-
-  svg.append("text")
-  .attr("x", 600)
-  .attr("y", 20)
-  .attr("dy", "1em")
-  .text("TOTAL")
-  for(node in nodes){
-    i=drawsingle(nodes[node],i,awn,margin);
-  }
-  
-
-}
-function drawdonut(){
-
-}
-var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    return "<strong>" + d.data.age + ":</strong> <span style='color:red'>" + d.data.population + "</span>";
-  })
-var tip2 = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    console.log("kjhjkhjk",d);
-    return "<strong>"+d+":</strong> <span style='color:red'>ff</span>";
-  })
-function drawsingle(node,i,awn,margin){
-    T=0;
-    T2=0;
-    for(s in awn.q1){
-      a=awn.q1[s];
-      if (!node.respuestas[s]) {node.respuestas[s]=0}
-      T=T+node.respuestas[s];
-    }
-    for(s in awn.q2){
-      a=awn.q1[s];
-      if (!node.rq2[s]) {node.rq2[s]=0}
-      T2=T2+node.rq2[s];
-    }
-    past=0;
-    if(T<=50){return i;}
-    else{
-      svg.append("text")
-        .attr("x", 20)
-        .attr("y", (40*i)+2+10 )
-        .text(node.name)
-      for(s in awn.q1){
-      val=node.respuestas[s]/T;
-      
-        svg.append("rect")
-        .attr("x", margin+200+past)
-        .attr("y", (40*i)+2 )
-        .attr("width", 150*val)
-        .attr("height", 20)
-        .attr( "fill",colors[s] )
-        .attr("data", val)
-
-        if (val>=.10) {
-        svg.append("text")
-          .attr("x", margin+200+past)
-          .attr("y", (40*i) )
-          .attr("class","smlabel")
-          .text(Math.round(val*100)+"%");
-        }
-        past+=150*val;
-      }
-      past=0;
-      for(s in awn.q2){
-      val=node.rq2[s]/T2;
-        svg
-        .append("rect")
-        .attr("x", 100+280+past)
-        .attr("y", (40*i)+2 )
-        .attr("width", 200*val)
-        .attr("height", 20)
-        .attr( "fill",colors[s] )
-        .attr("data", val)
-
-        if (val>=.10) {
-          svg.append("text")
-        .attr("x", 100+280+past)
-        .attr("y", (40*i) )
-        .attr("class","smlabel")
-        .text(Math.round(val*100)+"%");
-        }
-        
-        past+=200*val;
-      }
-      svg.append("text")
-        .attr("x", 600)
-        .attr("y", (40*i)+20 )
-        .text(T)
-      // console.log(node.name,T,node.respuestas.radEncGood/T, i);
-      return i+1;
-    }
-    
-     
-    
-}
- svg.call(tip2); 
- 
- //Draw the Circle
- 
-
-</script>
-<script type="text/javascript">
-
-
-
-function donut(contenedor,num){
-  console.log("DONUTR")
-  var width = 230,
-    height = 290,
-    radius = 120;
-
-var color = d3.scale.ordinal()
-    .range(["rgba(135,206,235,1)", "rgba(135,206,235,.7)", "rgba(135,206,235,.5)", "rgba(135,206,235,.3)", "rgba(135,206,235,.1)", "#000", "#fff"]);
-
-var arc = d3.svg.arc()
-    .outerRadius(radius - 10)
-    .innerRadius(radius - 35);
-
-var pie = d3.layout.pie()
-    .sort(null)
-    .value(function(d) { return d.population; });
-
-var svg = d3.select("#"+contenedor).append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-    svg.append("text")
-      .attr("dy", ".35em")
-      .attr("class","centertext")
-      .text(function(d) { return "Q"+num });
-
-    svg.call(tip);
-
-d3.csv("data/res.csv", type, function(error, data) {
-  data1=[data[0],data[1],data[2],data[3],data[4]]
-  data2=[data[5],data[6],data[7],data[8],data[9]]
-   data3=[data[10],data[11]]
-  if (num==1) {
-    data=data1
-  }
-  else if(num==2){
-    data=data2
-  }
-  else if(num==3){
-    data=data3
-  }
-  if (error) throw error;
-
-  var g = svg.selectAll(".arc")
-      .data(pie(data))
-    .enter().append("g")
-      .attr("class", "arc")
-      
-
-  g.append("path")
-      .attr("d", arc)
-      .style("fill", function(d) { return color(d.data.age); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide);
-
-  // g.append("text")
-  //     .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-  //     .attr("dy", ".35em")
-  //     .text(function(d) { return d.data.age; });
-});
-}
-function type(d) {
-  d.population = +d.population;
-  return d;
-}
-</script>
 <script type="text/javascript">
     donut("donut1",1,"q2");
     donut("donut2",2,"q3");
     donut("donut3",3,"q4");
   </script>
-<div class="container-fluid">
-  <div id="demo"></div>
-</div>
+
+
+<dgm-footer>
+        <div class="main-container style-scope dgm-footer">
+            <div class="container-fluid new-container style-scope dgm-footer">
+                <div class="row hidden-sm hidden-xs style-scope dgm-footer">
+                    <div class="col-md-2 col-lg-2 style-scope dgm-footer">
+                        <ul class="style-scope dgm-footer">
+                            <li class="style-scope dgm-footer"><h5 class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset" class="style-scope dgm-footer">Datos</a></h5></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Salud" class="style-scope dgm-footer">Salud</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Geoespacial" class="style-scope dgm-footer">Geoespacial</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Seguridad+y+Justicia" class="style-scope dgm-footer">Seguridad y Justicia</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Energ%C3%ADa+y+Medio+Ambiente" class="style-scope dgm-footer">Energía y Medio Ambiente</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Educaci%C3%B3n" class="style-scope dgm-footer">Educación</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Econom%C3%ADa" class="style-scope dgm-footer">Economía</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Cultura+y+Turismo" class="style-scope dgm-footer">Cultura y Turismo</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Finanzas+y+Contrataciones" class="style-scope dgm-footer">Finanzas y Contrataciones</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Infraestructura" class="style-scope dgm-footer">Infraestructura</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Desarrollo+Sostenible" class="style-scope dgm-footer">Desarrollo Sostenible</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/busca/dataset?theme=Gobiernos+Locales" class="style-scope dgm-footer">Gobiernos Locales</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-lg-2 style-scope dgm-footer">
+                        <ul class="style-scope dgm-footer">
+                            <li class="style-scope dgm-footer"><h5 class="style-scope dgm-footer"><a href="//datos.gob.mx/herramientas" class="style-scope dgm-footer">Herramientas</a></h5></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/herramientas?category=web" class="style-scope dgm-footer">Web</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/herramientas?category=movil" class="style-scope dgm-footer">Móviles</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-lg-2 style-scope dgm-footer">
+                        <ul class="style-scope dgm-footer">
+                            <li class="style-scope dgm-footer"><h5 class="style-scope dgm-footer"><a href="//datos.gob.mx/blog" class="style-scope dgm-footer">Blog</a></h5></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/blog?category=casos-de-uso" class="style-scope dgm-footer">Casos de uso</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/blog?category=noticias" class="style-scope dgm-footer">Noticias</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-lg-2 style-scope dgm-footer">
+                        <ul class="style-scope dgm-footer">
+                            <li class="style-scope dgm-footer"><h5 class="style-scope dgm-footer"><a href="//datos.gob.mx/guia" class="style-scope dgm-footer">Guía</a></h5></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-lg-2 style-scope dgm-footer">
+                        <ul class="style-scope dgm-footer">
+                            <li class="spacing style-scope dgm-footer"><h5 class="style-scope dgm-footer"><a href="//mxabierto.org" class="style-scope dgm-footer">Red México Abierto</a></h5></li>
+                            <li class="style-scope dgm-footer"><h5 class="style-scope dgm-footer"><a href="//adela.datos.gob.mx" class="style-scope dgm-footer">Adela</a></h5></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-lg-2 style-scope dgm-footer">
+                        <ul class="style-scope dgm-footer">
+                            <li class="style-scope dgm-footer"><h5 class="style-scope dgm-footer"><a href="//datos.gob.mx/acerca" class="style-scope dgm-footer">Acerca</a></h5></li>
+                        </ul>
+                        <a href="http://opendefinition.org/" class="img-link first style-scope dgm-footer" target="_blank">
+                            <img alt="Este material es de Conocimiento Abierto" src="https://assets.okfn.org/images/ok_buttons/ok_80x15_blue.png" class="style-scope dgm-footer">
+                        </a>
+                        <a href="//datos.gob.mx/libreusomx" class="img-link style-scope dgm-footer" alt="Libre Uso MX">
+                            <img src="https://raw.githubusercontent.com/mxabierto/assets/master/img/ic-libre-uso.png" alt="Libre Uso MX" class="style-scope dgm-footer">
+                        </a>
+                    </div>
+                </div>
+                <div class="row hidden-lg hidden-md style-scope dgm-footer">
+                    <div class="col-sm-12 col-xs-12 style-scope dgm-footer">
+                        <ul class="style-scope dgm-footer">
+                            <li class="style-scope dgm-footer"><a href="//busca.datos.gob.mx" class="style-scope dgm-footer">Datos</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/herramientas" class="style-scope dgm-footer">Herramientas</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/blog" class="style-scope dgm-footer">Blog</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/guia" class="style-scope dgm-footer">Guía</a></li>
+                            <li class="style-scope dgm-footer"><a href="//adela.datos.gob.mx" class="style-scope dgm-footer">Adela</a></li>
+                            <li class="style-scope dgm-footer"><a href="//datos.gob.mx/acerca" class="style-scope dgm-footer">Acerca</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid style-scope dgm-footer">
+            <div class="row style-scope dgm-footer">
+                <div class="col-sm-4 style-scope dgm-footer">
+                    <img class="gobmx-footer style-scope dgm-footer" src="https://framework-gb.cdn.gob.mx/assets/images/gobmxlogo.svg" width="126" height="70" alt="Página de inicio, Gobierno de México">
+                </div>
+            </div>
+        </div>
+    </dgm-footer>
+</body>
 
 
 <!-- <script src="js/donut.js"></script> -->
